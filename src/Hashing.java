@@ -29,15 +29,18 @@ public class Hashing {
             int[] x = convertToBinary(S[i]);
             int[] indexBinary = multiply(H, x);
             int index=convertToDecimal(indexBinary);
-            if(exist[index]){
+            while(exist[index]){
                 //the same index exist
                 //collision ->so call again random the H and get another index
                 H = randomH();
                 hashRandomized.add(H);
-            }else{
+                System.out.println("collision");
+                 indexBinary = multiply(H, x);
+                 index=convertToDecimal(indexBinary);
+            }
                 result[index]=S[i];
                 exist[index]=true;
-            }
+
         }
     }
 
@@ -102,6 +105,7 @@ public class Hashing {
        for(int i=0;i<n*n;i++)
            System.out.println(result[i]);
     }
+
 }
 //expected number of collision =n/m
 //e u-bits long. Say the table size M is power of 2, so an index is b-bits long with
