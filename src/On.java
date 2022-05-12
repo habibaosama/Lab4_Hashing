@@ -116,8 +116,10 @@ public class On {
                System.out.println("////////////////////////////////////////////////");
                System.out.println(i+"hiiiiii");
                for (int j = 0; j < finalHashTable[i].length; j++) {
-                   System.out.println(finalHashTable[i][j]);
-                   System.out.println("Number "+finalHashTable[i][j]+" in index : "+j+" of second hashtable of the "+i+" index of the first hashtable");
+                   if(finalHashTable[i][j]!=0) {
+                     //  System.out.println(finalHashTable[i][j]);
+                       System.out.println("Number " + finalHashTable[i][j] + " in index : " + j + " of second hashtable of the " + i + " index of the first hashtable");
+                   }
                }
 
            }
