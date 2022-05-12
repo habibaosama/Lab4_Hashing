@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class On {
-    private int U = 32;
+    private int U = 32 ;
     private int b;
     private int n;
     private int[] S;
