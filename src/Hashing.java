@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -8,40 +9,41 @@ public class Hashing {
     private int[] S;
     private boolean[] exist;
     private int[]result;
-    //for saving the random H
-    public LinkedList<int[][]> hashRandomized;
 
    public  Hashing(int[] a) {
         n = a.length;
-        b = (int) Math.ceil(Math.log(n) / Math.log(2));
+        b = (int) Math.floor(Math.log(Math.pow(n,2)) / Math.log(2));
         S = a;
-        hashRandomized = new LinkedList<>();
+
         //since it is n^2
         exist=new boolean[n*n];
         result=new int [n*n];
         hashFunction();
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    public void hashFunction() {
+      public void hashFunction() {
         int[][] H = randomH();
-        hashRandomized.add(H);
-        for (int i = 0; i < n; i++) {
-            int[] x = convertToBinary(S[i]);
-            int[] indexBinary = multiply(H, x);
-            int index=convertToDecimal(indexBinary);
-            while(exist[index]){
-                //the same index exist
-                //collision ->so call again random the H and get another index
-                H = randomH();
-                hashRandomized.add(H);
-                System.out.println("collision");
-                 indexBinary = multiply(H, x);
-                 index=convertToDecimal(indexBinary);
+          boolean hashed;
+        do{
+            hashed=true;
+            for(int i=0;i<n;i++) {
+                int[] x = convertToBinary(S[i]);
+                int[] indexBinary = multiply(H, x);
+                int index = convertToDecimal(indexBinary);
+                if (exist[index]) {
+                    //the same index exist
+                    //collision ->so call again random the H and get another index
+                    System.out.println("collision");
+                    H = randomH();
+                    hashed = false;
+                    Arrays.fill(exist, false);
+                    break;
+                } else {
+                    result[index] = S[i];
+                    exist[index] = true;
+                }
             }
-                result[index]=S[i];
-                exist[index]=true;
-
-        }
+            }while(!hashed);
     }
 
     private int[][] randomH() {
@@ -95,6 +97,7 @@ public class Hashing {
         while (num != 0) {
             bin[i++] = num % 2;
             num /= 2;
+
         }
        /* for(int j=0;j<i;j++ )
               System.out.print(bin[j]+ " ");
