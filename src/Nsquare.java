@@ -53,10 +53,6 @@ public class Nsquare {
         System.out.println("No. of collision that occurred= "+ hashing.noCollision );
 
     }
-    public ArrayList convertToArraylist(){
-        ArrayList<Integer> res=new ArrayList<Integer>();
-         return res;
-    }
 
 
 }
