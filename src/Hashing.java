@@ -1,69 +1,27 @@
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Hashing {
-    private int U = 32;
-    private int b;
-    private int n;
-    private int[] S;
-    private boolean[] exist;
-    private int[]result;
-
-   public  Hashing(int[] a) {
-        n = a.length;
-        b = (int) Math.floor(Math.log(Math.pow(n,2)) / Math.log(2));
-        S = a;
-
-        //since it is n^2
-        exist=new boolean[n*n];
-        result=new int [n*n];
-        hashFunction();
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-      public void hashFunction() {
-        int[][] H = randomH();
-          boolean hashed;
-        do{
-            hashed=true;
-            for(int i=0;i<n;i++) {
-                int[] x = convertToBinary(S[i]);
-                int[] indexBinary = multiply(H, x);
-                int index = convertToDecimal(indexBinary);
-                if (exist[index]) {
-                    //the same index exist
-                    //collision ->so call again random the H and get another index
-                    System.out.println("collision");
-                    H = randomH();
-                    hashed = false;
-                    Arrays.fill(exist, false);
-                    break;
-                } else {
-                    result[index] = S[i];
-                    exist[index] = true;
-                }
-            }
-            }while(!hashed);
-    }
-
-    private int[][] randomH() {
-        int[][] H = new int[b][U];
+    static final int U = 32;
+     int n;
+     int[] S;
+     int noCollision;
+     Hashing(int[] s){
+         this.n=s.length;
+         this.S=s;
+         this.noCollision=-1;
+     }
+     //generate random H
+    public int[][] randomH(int [][]H) {
+        //int[][] H = new int[b][U];
         Random random = new Random();
-        for (int i = 0; i < b; i++) {
+        for (int i = 0; i < H.length; i++) {
             for (int j = 0; j < U; j++) {
                 H[i][j] = random.nextInt(2);
             }
         }
-       /* System.out.println("H");
-        for(int i=0;i<b;i++){
-            for(int j=0;j<U;j++){
-                System.out.print(H[i][j]+" ");
-            }
-            System.out.println();
-        }*/
         return H;
     }
-    private int convertToDecimal(int[] bin){
+    public int convertToDecimal(int[] bin){
         int val=0;
         for(int i=0;i < bin.length;i++)
             val+=bin[i]*Math.pow(2,i);
@@ -83,10 +41,6 @@ public class Hashing {
                 multiply[i] = 1;
 
         }
-      /* System.out.println("multiply");
-        for(int i=0;i< H.length;i++)
-            System.out.print(multiply[i] +" ");*/
-
         return multiply;
     }
     public int[] convertToBinary(int num) {
@@ -99,18 +53,10 @@ public class Hashing {
             num /= 2;
 
         }
-       /* for(int j=0;j<i;j++ )
-              System.out.print(bin[j]+ " ");
-        System.out.println();*/
         return bin;
     }
-    public void print(){
-       for(int i=0;i<n*n;i++)
-           System.out.println(result[i]);
-    }
+
+
+
 
 }
-//expected number of collision =n/m
-//e u-bits long. Say the table size M is power of 2, so an index is b-bits long with
-//M = 2^b.
-//therefore b=ceil((log n)/log2)
