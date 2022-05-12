@@ -34,7 +34,7 @@ public class Nsquare {
                     H =hashing.randomH(b);
                     hashed = false;
                     Arrays.fill(exist, false);
-
+                    System.out.println("collision");
                     break;
                 } else {
                     result[index] = S[i];
