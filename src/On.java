@@ -105,7 +105,9 @@ public class On {
             System.out.println("Not Found!!");
         }
     }
-
+    public int noOfHashFuns(){
+        return hashing.noCollision;
+    }
 
     public void print(){
 

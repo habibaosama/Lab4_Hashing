@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-        int []s={1,2,3,5,6,7,8,9,44,3,15,22};
+        int []s={1,2,3,5,6,7,8,9,44,12,15,22};
         s = Arrays.stream(s).distinct().toArray();
         Hashing hashing = new Hashing(s);
         Nsquare hash=new Nsquare(hashing);
