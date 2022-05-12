@@ -34,7 +34,7 @@ public class Nsquare {
                     H =hashing.randomH(b);
                     hashed = false;
                     Arrays.fill(exist, false);
-
+                    System.out.println("colision!!");
                     break;
                 } else {
                     result[index] = S[i];
@@ -42,7 +42,10 @@ public class Nsquare {
                 }
             }
         }while(!hashed);
-        print();
+      //  print();
+    }
+    public int noOfHashFuns(){
+        return hashing.noCollision;
     }
     public void print(){
         for(int i=0;i<n*n;i++){
