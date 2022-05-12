@@ -44,6 +44,9 @@ public class Hashing {
         }
         return multiply;
     }
+    public int noOfHashFuns(){
+        return noCollision;
+    }
     public int[] convertToBinary(int num) {
         //since keys will all be 32-bit integers
         int[] bin = new int[32];
