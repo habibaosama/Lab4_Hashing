@@ -19,6 +19,7 @@ public class Hashing {
                 H[i][j] = random.nextInt(2);
             }
         }
+        noCollision++;
         return H;
     }
     public int convertToDecimal(int[] bin){
@@ -45,7 +46,6 @@ public class Hashing {
     }
     public int[] convertToBinary(int num) {
         //since keys will all be 32-bit integers
-        System.out.println("binary " + num);
         int[] bin = new int[32];
         int i = 0;
         while (num != 0) {

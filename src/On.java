@@ -84,6 +84,7 @@ public class On {
                 Hashing kk=new Hashing(a);
                 Nsquare subTable = new Nsquare(kk);
                 // System.out.println(subTable.getCollisionNum());
+                //////////////////////////3mlt comment////////////////////
                 subHashTable[i] = subTable.result;
                 hashfuns[index]=subTable.H;
             }else{

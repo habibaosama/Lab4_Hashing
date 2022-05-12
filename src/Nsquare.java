@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Nsquare {
@@ -11,9 +12,9 @@ public class Nsquare {
     public Nsquare(Hashing hashingObj) {
         this.hashing = hashingObj;
         n=hashing.n;
-        result = new int[n*n];
+        result=new int[n*n];
         exist = new boolean[n*n];
-         b = (int) Math.floor(Math.log(Math.pow(n,2)) / Math.log(2));
+        b = (int) Math.floor(Math.log(Math.pow(n,2)) / Math.log(2));
         H = new int[b][hashing.U];
         hashFunction();
     }
@@ -30,10 +31,10 @@ public class Nsquare {
                 if (exist[index]) {
                     //the same index exist
                     //collision ->so call again random the H and get another index
-                    System.out.println("collision");
                     H =hashing.randomH(b);
                     hashed = false;
                     Arrays.fill(exist, false);
+
                     break;
                 } else {
                     result[index] = S[i];
@@ -44,8 +45,17 @@ public class Nsquare {
         print();
     }
     public void print(){
-        for(int i=0;i<n*n;i++)
-            System.out.print(result[i]);
+        for(int i=0;i<n*n;i++){
+            if(exist[i]){
+                System.out.println(" Number " + result[i] + " in index : "+ i);
+            }
+        }
+        System.out.println("No. of collision that occurred= "+ hashing.noCollision );
+
+    }
+    public ArrayList convertToArraylist(){
+        ArrayList<Integer> res=new ArrayList<Integer>();
+         return res;
     }
 
 
