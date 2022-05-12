@@ -44,6 +44,7 @@ public class Nsquare {
         }while(!hashed);
       //  print();
     }
+
     public int noOfHashFuns(){
         return hashing.noCollision;
     }
