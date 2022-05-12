@@ -13,6 +13,8 @@ public class On {
     //for saving the random H
     public LinkedList<int[][]> hashRandomized;
     Hashing hashing;
+    Nsquare[] hashTable;
+    int[][] subHashTable;
     public  On(Hashing hashingObj) {
         this.hashing = hashingObj;
         n = hashing.n;
@@ -24,6 +26,7 @@ public class On {
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////
     public void hashFunction() {
+        hashTable = new Nsquare[n];
         int[]S=hashing.S;
         ArrayList<Integer>[]  h=new ArrayList[n];
         for (int i = 0; i < n; i++) {
@@ -31,7 +34,7 @@ public class On {
         }
         int[][] H = hashing.randomH(b);
         hashRandomized.add(H);
-        for (int i = 0; i < n; i++) {
+       for (int i = 0; i < n; i++) {
             int[] x = hashing.convertToBinary(S[i]);
             int[] indexBinary = hashing.multiply(H, x);
             int index=hashing.convertToDecimal(indexBinary);
@@ -44,17 +47,48 @@ public class On {
                 result[index] = S[i];
                 exist[index] = true;
             }
+        }
 
+
+        subHashTable = new int[hashTable.length][n*n];
+        for (int i = 0; i < n; i++) {
+            if (h[i] != null && h[i].size() != 0) {
+                Integer[] arr = new Integer[h[i].size()];
+                arr = h[i].toArray(arr);
+                int[] a= new int[h[i].size()];
+                for(int j=0;j<h[i].size();j++){
+                    a[j]=arr[j];
+                    System.out.println("hena "+a[j]);
+                }
+
+                Hashing kk=new Hashing(a);
+                Nsquare subTable = new Nsquare(kk);
+                // System.out.println(subTable.getCollisionNum());
+                subHashTable[i] = subTable.result;
+            }else{
+                subHashTable[i]=null;
+            }
         }
     }
 
 
 
 
-
     public void print(){
+        System.out.println("\n");
         for(int i=0;i<n;i++)
             System.out.println(result[i]);
+
+        System.out.println("////////////////////////////////////////////////");
+
+        for(int i=0;i<hashTable.length;i++) {
+           if(subHashTable[i]!=null) {
+               for (int j = 0; j < subHashTable[i].length; j++) {
+                   System.out.println(subHashTable[i][j]);
+               }
+               System.out.println("////////////////////////////////////////////////");
+           }
+        }
     }
 
 }
