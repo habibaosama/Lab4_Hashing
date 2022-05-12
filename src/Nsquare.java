@@ -15,10 +15,11 @@ public class Nsquare {
         exist = new boolean[n*n];
          b = (int) Math.floor(Math.log(Math.pow(n,2)) / Math.log(2));
         H = new int[b][hashing.U];
+        hashFunction();
     }
     public void hashFunction() {
         int[]S=hashing.S;
-         H = hashing.randomH(H);
+         H = hashing.randomH(b);
         boolean hashed;
         do{
             hashed=true;
@@ -30,7 +31,7 @@ public class Nsquare {
                     //the same index exist
                     //collision ->so call again random the H and get another index
                     System.out.println("collision");
-                    H =hashing.randomH(H);
+                    H =hashing.randomH(b);
                     hashed = false;
                     Arrays.fill(exist, false);
                     break;

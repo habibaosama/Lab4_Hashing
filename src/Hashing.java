@@ -11,10 +11,10 @@ public class Hashing {
          this.noCollision=-1;
      }
      //generate random H
-    public int[][] randomH(int [][]H) {
-        //int[][] H = new int[b][U];
+    public int[][] randomH(int b) {
+        int[][] H = new int[b][U];
         Random random = new Random();
-        for (int i = 0; i < H.length; i++) {
+        for (int i = 0; i < b; i++) {
             for (int j = 0; j < U; j++) {
                 H[i][j] = random.nextInt(2);
             }
