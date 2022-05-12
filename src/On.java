@@ -42,13 +42,21 @@ public class On {
                 //the same index exist
                 //collision ->so call again random the H and get another index
                 h[index].add(S[i]);
-                System.out.println("colli"+h[index]);
+                System.out.println(index+"colli"+h[index]);
             }else {
                 result[index] = S[i];
                 exist[index] = true;
             }
         }
-
+       int sum=0;
+        for (int i = 0; i < n; i++) {
+            if (h[i].size()>=1) {
+                sum += (h[i].size() * h[i].size());
+            }else{
+                sum+=1;
+            }
+        }
+        System.out.println("sum="+sum);
 
         subHashTable = new int[hashTable.length][n*n];
         for (int i = 0; i < n; i++) {
@@ -79,14 +87,17 @@ public class On {
         for(int i=0;i<n;i++)
             System.out.println(result[i]);
 
-        System.out.println("////////////////////////////////////////////////");
+
 
         for(int i=0;i<hashTable.length;i++) {
+
            if(subHashTable[i]!=null) {
+               System.out.println("////////////////////////////////////////////////");
+               System.out.println(i+"hiiiiii");
                for (int j = 0; j < subHashTable[i].length; j++) {
                    System.out.println(subHashTable[i][j]);
                }
-               System.out.println("////////////////////////////////////////////////");
+
            }
         }
     }
