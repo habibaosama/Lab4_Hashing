@@ -42,7 +42,7 @@ public class On {
             int index=hashing.convertToDecimal(indexBinary);
             h[index].add(S[i]);
             exist[i]=true;
-            System.out.println(index+"colli"+h[index]);
+         //   System.out.println(index+"colli"+h[index]);
         }
        int sum=0;
         for (int i = 0; i < n; i++) {
@@ -50,7 +50,7 @@ public class On {
                 sum += (h[i].size() * h[i].size());
             }
         }
-        System.out.println("sum="+sum);
+        System.out.println("Space Occupied ="+sum);
 
         int p=0;
 
@@ -63,7 +63,7 @@ public class On {
                 int[] a= new int[h[i].size()];
                 for(int j=0;j<h[i].size();j++){
                     a[j]=arr[j];
-                    System.out.println("hena "+a[j]);
+                //    System.out.println("hena "+a[j]);
                 }
                 hashing.noCollision++;
                 int[] x = hashing.convertToBinary(a[0]);
@@ -114,7 +114,7 @@ public class On {
         for(int i=0;i<hashTable.length;i++) {
            if(finalHashTable[i]!=null) {
                System.out.println("////////////////////////////////////////////////");
-               System.out.println(i+"hiiiiii");
+              // System.out.println(i+"hiiiiii");
                for (int j = 0; j < finalHashTable[i].length; j++) {
                    if(finalHashTable[i][j]!=0) {
                      //  System.out.println(finalHashTable[i][j]);
