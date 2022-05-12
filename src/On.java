@@ -10,10 +10,12 @@ public class On {
     private int[] S;
     private boolean[] exist;
     private int[]result;
+    int H[][];
     //for saving the random H
     public LinkedList<int[][]> hashRandomized;
     Hashing hashing;
     Nsquare[] hashTable;
+    int[][][]  hashfuns;
     int[][] subHashTable;
     public  On(Hashing hashingObj) {
         this.hashing = hashingObj;
@@ -32,8 +34,9 @@ public class On {
         for (int i = 0; i < n; i++) {
             h[i] = new ArrayList<Integer>();
         }
-        int[][] H = hashing.randomH(b);
+        H = hashing.randomH(b);
         hashRandomized.add(H);
+        int y=0;
        for (int i = 0; i < n; i++) {
             int[] x = hashing.convertToBinary(S[i]);
             int[] indexBinary = hashing.multiply(H, x);
@@ -57,8 +60,15 @@ public class On {
             }
         }
         System.out.println("sum="+sum);
-
+        for (int i = 0; i < n; i++) {
+            if(h[i].size()!=0){
+                y++;
+            }
+        }
+        System.out.println("hashfuns"+y);
+        int p=0;
         subHashTable = new int[hashTable.length][n*n];
+        hashfuns=new int[n][][];
         for (int i = 0; i < n; i++) {
             if (h[i] != null && h[i].size() != 0) {
                 Integer[] arr = new Integer[h[i].size()];
@@ -68,18 +78,44 @@ public class On {
                     a[j]=arr[j];
                     System.out.println("hena "+a[j]);
                 }
-
+                int[] x = hashing.convertToBinary(a[0]);
+                int[] indexBinary = hashing.multiply(H, x);
+                int index=hashing.convertToDecimal(indexBinary);
                 Hashing kk=new Hashing(a);
                 Nsquare subTable = new Nsquare(kk);
                 // System.out.println(subTable.getCollisionNum());
                 subHashTable[i] = subTable.result;
+                hashfuns[index]=subTable.H;
             }else{
                 subHashTable[i]=null;
             }
+
         }
     }
 
-
+    public void lookUp(int v){
+        int[] x = hashing.convertToBinary(v);
+        int[] indexBinary = hashing.multiply(H, x);
+        int index=hashing.convertToDecimal(indexBinary);
+        int[] indBinary;
+        if(result[index]==v){
+            System.out.println("Found!! at the first hashtable at index "+index);
+        }else{
+            if(hashfuns[index]!=null){
+               // System.out.println(hashfuns[index].toString());
+                indBinary= hashing.multiply(hashfuns[index], x);
+                int ind=hashing.convertToDecimal(indBinary);
+                int[] r=subHashTable[index];
+                if(r[ind]==v){
+                    System.out.println("Found!! at the index "+ind+" of second hashtable of the "+index+" index of the first hashtable");
+                }else{
+                    System.out.println("Not Found!!");
+                }
+            }else{
+                System.out.println("Not Found!!");
+            }
+        }
+    }
 
 
     public void print(){
