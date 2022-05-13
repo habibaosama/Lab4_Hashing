@@ -36,14 +36,14 @@ public class On {
         H = hashing.randomH(b);
         hashRandomized.add(H);
 
-       for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             int[] x = hashing.convertToBinary(S[i]);
             int[] indexBinary = hashing.multiply(H, x);
             int index=hashing.convertToDecimal(indexBinary);
             h[index].add(S[i]);
             exist[i]=true;
         }
-       int sum=0;
+        int sum=0;
         for (int i = 0; i < n; i++) {
             if (h[i] != null) {
                 sum += (h[i].size() * h[i].size());
@@ -63,7 +63,7 @@ public class On {
                 int[] a= new int[h[i].size()];
                 for(int j=0;j<h[i].size();j++){
                     a[j]=arr[j];
-                //    System.out.println("hena "+a[j]);
+                    //    System.out.println("hena "+a[j]);
                 }
                 hashing.noCollision++;
                 int[] x = hashing.convertToBinary(a[0]);
@@ -113,18 +113,18 @@ public class On {
     public void print(){
 
         for(int i=0;i<hashTable.length;i++) {
-           if(finalHashTable[i]!=null) {
-               System.out.println("////////////////////////////////////////////////");
-              // System.out.println(i+"hiiiiii");
-               for (int j = 0; j < finalHashTable[i].length; j++) {
-                   if(ex[i][j]==true) {
-                     //  System.out.println(finalHashTable[i][j]);
-                       System.out.println("Number " + finalHashTable[i][j] + " in index : " + j + " of second hashtable of the " + i + " index of the first hashtable");
-                   }
-               }
-               System.out.println("No. of Re-built Hash = "+colli[i]);
+            if(finalHashTable[i]!=null) {
+                System.out.println("////////////////////////////////////////////////");
+                // System.out.println(i+"hiiiiii");
+                for (int j = 0; j < finalHashTable[i].length; j++) {
+                    if(ex[i][j]==true) {
+                        //  System.out.println(finalHashTable[i][j]);
+                        System.out.println("Number " + finalHashTable[i][j] + " in index : " + j + " of second hashtable of the " + i + " index of the first hashtable");
+                    }
+                }
+                System.out.println("No. of Re-built Hash = "+colli[i]);
 
-           }
+            }
         }
         System.out.println("------> Total no. of Re-built Hash of all the tables = "+ noOfHashFuns() );
     }
