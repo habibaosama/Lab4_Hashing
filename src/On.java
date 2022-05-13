@@ -115,7 +115,7 @@ public class On {
 
         for(int i=0;i<hashTable.length;i++) {
            if(finalHashTable[i]!=null) {
-               System.out.println("////////////////////////////////////////////////");
+               System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////");
               // System.out.println(i+"hiiiiii");
                for (int j = 0; j < finalHashTable[i].length; j++) {
                    if(finalHashTable[i][j]!=0) {
@@ -126,7 +126,7 @@ public class On {
 
            }
         }
-        System.out.println("No. of collision that occurred= "+ hashing.noCollision );
+        System.out.println("re-build the hash table in the case of collision= "+ hashing.noCollision );
     }
 
 }

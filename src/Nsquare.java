@@ -58,7 +58,7 @@ public class Nsquare {
                 System.out.println(" Number " + result[i] + "  in index : "+ i);
             }
         }
-        System.out.println("No. of collision that occurred= "+ hashing.noCollision );
+        System.out.println("re-build the hash table in the case of collision = "+ hashing.noCollision );
 
     }
 
