@@ -7,12 +7,10 @@ public class On {
     private int U = 32 ;
     private int b;
     private int n;
-    private int[] S;
+    private int[] colli;
     private boolean[] exist;
-
-   // private int[] result;
+    private boolean[][] ex;
     int H[][];
-    //for saving the random H
     public LinkedList<int[][]> hashRandomized;
     Hashing hashing;
     Nsquare[] hashTable;
@@ -44,7 +42,6 @@ public class On {
             int index=hashing.convertToDecimal(indexBinary);
             h[index].add(S[i]);
             exist[i]=true;
-         //   System.out.println(index+"colli"+h[index]);
         }
        int sum=0;
         for (int i = 0; i < n; i++) {
@@ -55,8 +52,9 @@ public class On {
         System.out.println("Space Occupied ="+sum);
 
         int p=0;
-
-        finalHashTable = new int[n][n*n];
+        colli=new int[n];
+        ex=new boolean[n][];
+        finalHashTable = new int[n][];
         hashfuns=new int[n][][];
         for (int i = 0; i < n; i++) {
             if (h[i] != null && h[i].size() != 0) {
@@ -73,8 +71,9 @@ public class On {
                 int index=hashing.convertToDecimal(indexBinary);
                 Hashing kk=new Hashing(a);
                 Nsquare subTable = new Nsquare(kk);
-
+                ex[i]=subTable.exist;
                 finalHashTable[i] = subTable.result;
+                colli[i]=subTable.noOfHashFuns();
                 hashfuns[index]=subTable.H;
                 hashing.noCollision+=subTable.noOfHashFuns();
             }else{
@@ -118,15 +117,16 @@ public class On {
                System.out.println("////////////////////////////////////////////////");
               // System.out.println(i+"hiiiiii");
                for (int j = 0; j < finalHashTable[i].length; j++) {
-                   if(finalHashTable[i][j]!=0) {
+                   if(ex[i][j]==true) {
                      //  System.out.println(finalHashTable[i][j]);
                        System.out.println("Number " + finalHashTable[i][j] + " in index : " + j + " of second hashtable of the " + i + " index of the first hashtable");
                    }
                }
+               System.out.println("No. of Re-built Hash = "+colli[i]);
 
            }
         }
-        System.out.println("No. of collision that occurred= "+ hashing.noCollision );
+        System.out.println("------> Total no. of Re-built Hash of all the tables = "+ noOfHashFuns() );
     }
 
 }
