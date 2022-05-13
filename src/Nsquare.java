@@ -61,6 +61,18 @@ public class Nsquare {
         System.out.println("Number to re-build the hash table in the case of collision = "+ hashing.noCollision );
 
     }
+    public void lookUp(int value){
+        boolean flag =false;
+        for(int i=0;i<n*n;i++){
+            if(value==result[i]){
+                System.out.println(value +" Found  at index "+i);
+                flag=true;
+                break;
+            }
+        }
+        if(!flag)
+            System.out.println(value+ " Not found !!");
+    }
 
 
 }
