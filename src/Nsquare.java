@@ -7,6 +7,7 @@ public class Nsquare {
     boolean exist[];
     int b;
     int n;
+    int[][] arr;
     Hashing hashing;
 
     public Nsquare(Hashing hashingObj) {
@@ -20,25 +21,32 @@ public class Nsquare {
     }
     public void hashFunction() {
         int[]S=hashing.S;
+        arr=new int[n][1];
          H = hashing.randomH(b);
         boolean hashed;
         do{
             hashed=true;
             for(int i=0;i<n;i++) {
-                int[] x = hashing.convertToBinary(S[i]);
-                int[] indexBinary =hashing.multiply(H, x);
-                int index = hashing.convertToDecimal(indexBinary);
-                if (exist[index]) {
-                    //the same index exist
-                    //collision ->so call again random the H and get another index
-                    H =hashing.randomH(b);
-                    hashed = false;
-                    Arrays.fill(exist, false);
-                   // System.out.println("colision!!");
-                    break;
-                } else {
-                    result[index] = S[i];
-                    exist[index] = true;
+                if(arr[i][0]!=1) {
+                    arr[i][0]=1;
+                    System.out.println("henaa" + n);
+                    int[] x = hashing.convertToBinary(S[i]);
+                    int[] indexBinary = hashing.multiply(H, x);
+                    int index = hashing.convertToDecimal(indexBinary);
+                    System.out.println("hhhhh" + S[i]);
+                    if (exist[index]) {
+                        arr[i][0]=0;
+                        //the same index exist
+                        //collision ->so call again random the H and get another index
+                        H = hashing.randomH(b);
+                        hashed = false;
+                        Arrays.fill(exist, false);
+                        System.out.println("colision!!" + hashed);
+                        break;
+                    } else {
+                        result[index] = S[i];
+                        exist[index] = true;
+                    }
                 }
             }
         }while(!hashed);

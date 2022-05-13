@@ -54,7 +54,7 @@ public class On {
 
         int p=0;
 
-        finalHashTable = new int[n][];
+        finalHashTable = new int[n][n*n];
         hashfuns=new int[n][][];
         for (int i = 0; i < n; i++) {
             if (h[i] != null && h[i].size() != 0) {

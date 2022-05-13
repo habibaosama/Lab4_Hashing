@@ -5,7 +5,7 @@ public class Main {
         int []s={1,2,3,5,6,7,8,9,44,12,15,22};
         s = Arrays.stream(s).distinct().toArray();
         Hashing hashing = new Hashing(s);
-        //Nsquare hash=new Nsquare(hashing);
+      //  Nsquare hash=new Nsquare(hashing);
 
         On hash=new On(hashing);
         hash.print();
