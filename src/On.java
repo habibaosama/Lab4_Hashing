@@ -9,6 +9,7 @@ public class On {
     private int n;
     private int[] S;
     private boolean[] exist;
+
    // private int[] result;
     int H[][];
     //for saving the random H
