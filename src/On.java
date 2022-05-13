@@ -23,6 +23,7 @@ public class On {
         b = (int) Math.floor(Math.log(n) / Math.log(2));
         hashRandomized = new LinkedList<>();
         exist=new boolean[n];
+        finalHashTable = new int[n][];
         hashFunction();
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +61,6 @@ public class On {
         int p=0;
         colli=new int[n];
         ex=new boolean[n][];
-        finalHashTable = new int[n][];
         hashfuns=new int[n][][];
 
         for (int i = 0; i < n; i++) {
