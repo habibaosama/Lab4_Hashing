@@ -98,18 +98,22 @@ public class On {
         }
     }
 
-    public void lookUp(int v){
+
+
+    public void lookUp(int v){//looking for an element to see if it is the hash table or not.
 
         int[] x = hashing.convertToBinary(v);
         int[] indexBinary = hashing.multiply(H, x);
         int index=hashing.convertToDecimal(indexBinary);
         int[] indBinary;
 
-        if(exist[index]==true){
+        if(exist[index]==true){//Check if the index of the element  entered was already added or not.
+
             if(hashfuns[index]!=null){
-                indBinary= hashing.multiply(hashfuns[index], x);
+                indBinary= hashing.multiply(hashfuns[index], x);//get the hash function used for this element previously.
                 int ind=hashing.convertToDecimal(indBinary);
                 int[] r=finalHashTable[index];
+
                 if(r[ind]==v){
                     System.out.println("Found!! at the index "+ind+" of second hashtable of the "+index+" index of the first hashtable");
                 }else{
@@ -122,11 +126,12 @@ public class On {
             System.out.println("Not Found!!");
         }
     }
-    public int noOfHashFuns(){
+
+    public int noOfHashFuns(){//printing the no.of rebuilt hash functions.
         return hashing.noCollision;
     }
 
-    public void print(){
+    public void print(){//printing the resulted hash table.
 
         for(int i=0;i<hashTable.length;i++) {
             if(finalHashTable[i]!=null) {
