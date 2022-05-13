@@ -126,7 +126,7 @@ public class On {
 
            }
         }
-        System.out.println("re-build the hash table in the case of collision= "+ hashing.noCollision );
+        System.out.println("Number to re-build the hash table in the case of collision= "+ hashing.noCollision );
     }
 
 }
