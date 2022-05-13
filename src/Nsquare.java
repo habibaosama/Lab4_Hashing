@@ -9,8 +9,8 @@ public class Nsquare {
     int n;
     Hashing hashing;
 
-    public Nsquare(Hashing hashingObj) {
-        this.hashing = hashingObj;
+    public Nsquare(Hashing hash) {
+        this.hashing = hash;
         n=hashing.n;
         result=new int[n*n];
         exist = new boolean[n*n];
