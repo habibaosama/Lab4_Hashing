@@ -55,7 +55,7 @@ public class Nsquare {
     public void print(){
         for(int i=0;i<n*n;i++){
             if(exist[i]){
-                System.out.println(" Number " + result[i] + "  in index : "+ i);
+                System.out.println("Number " + result[i] + "  in index : "+ i);
             }
         }
         System.out.println("Number to re-build the hash table in the case of collision = "+ hashing.noCollision );
