@@ -18,6 +18,7 @@ public class On {
     Nsquare[] hashTable;
     int[][][]  hashfuns;
     int[][] finalHashTable;
+
     public  On(Hashing hashingObj) {
         this.hashing = hashingObj;
         n = hashing.n;
