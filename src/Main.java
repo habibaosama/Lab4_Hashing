@@ -52,11 +52,19 @@ public class Main {
                         if(x==1){
                             System.out.println("Enter the number you want to look for:");
                             int y= input.nextInt();
-                            hash1.lookUp(y);
+                            if(hash1!=null) {
+                                hash1.lookUp(y);
+                            }else{
+                                System.out.println("Enter the array first!!!");
+                            }
                         }else if(x==2){
                             System.out.println("Enter the number you want to look for:");
                             int y= input.nextInt();
-                            hash2.lookUp(y);
+                            if(hash2!=null) {
+                                hash2.lookUp(y);
+                            }else{
+                                System.out.println("Enter the array first!!!");
+                            }
                         }else{
                             System.out.println("Wrong Entry!!!");
                         }
