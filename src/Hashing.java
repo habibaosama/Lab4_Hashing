@@ -22,6 +22,7 @@ public class Hashing {
         noCollision++;
         return H;
     }
+    //convert the result from the multiplication to binary
     public int convertToDecimal(int[] bin){
         int val=0;
         for(int i=0;i < bin.length;i++)
@@ -44,7 +45,7 @@ public class Hashing {
         }
         return multiply;
     }
-
+   //convert the value from the input array to binary to be multiplied
     public int[] convertToBinary(int num) {
         //since keys will all be 32-bit integers
         int[] bin = new int[32];

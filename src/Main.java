@@ -47,7 +47,7 @@ public class Main {
                 }break;
                 case 3:{
 
-                        System.out.println("Enter the method you want to look up in: /n -Enter 1 for method 1 /n -Enter 2 for method 2");
+                        System.out.println("Enter the method you want to look up in:  -Enter 1 for method 1 :::: -Enter 2 for method 2");
                         int x= input.nextInt();
                         if(x==1){
                             System.out.println("Enter the number you want to look for:");
