@@ -59,6 +59,7 @@ public class On {
         }
         System.out.println("Space Occupied ="+sum);
 
+
         int p=0;
         colli=new int[n];
         hashfuns=new int[n][][];
