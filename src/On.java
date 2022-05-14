@@ -37,14 +37,14 @@ public class On {
             h[i] = new ArrayList<Integer>();
         }
 
-        H = hashing.randomH(b);
+        H = hashing.randomH(b);//generating random hash function
         hashRandomized.add(H);
 
         //Put every element who has the same index in the same arraylist
         // to be sent to the first method late.
         for (int i = 0; i < n; i++) {
             int[] x = hashing.convertToBinary(S[i]);
-            int[] indexBinary = hashing.multiply(H, x);
+            int[] indexBinary = hashing.multiply(H, x);//multiplying the generated hash function by each element in binary representation
             int index=hashing.convertToDecimal(indexBinary);
             h[index].add(S[i]);
             exist[i]=true;
@@ -54,7 +54,7 @@ public class On {
         int sum=0;
         for (int i = 0; i < n; i++) {
             if (h[i] != null) {
-                sum += (h[i].size() * h[i].size());
+                sum += (h[i].size() * h[i].size());//squaring the size of each array of elements who has the same index
             }
         }
         System.out.println("Space Occupied ="+sum);
